@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace vm.web.Pages
@@ -12,6 +7,8 @@ namespace vm.web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public string ClientInfo { get; private set; }
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -19,7 +16,7 @@ namespace vm.web.Pages
 
         public void OnGet()
         {
-
+            ClientInfo = $"Client IP = {HttpContext.Connection.RemoteIpAddress}";
         }
     }
 }
